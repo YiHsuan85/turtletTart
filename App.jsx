@@ -12,7 +12,7 @@ export default function App() {
     note: ''
   });
 
-  const CORRECT_PASSWORD = "CORRECT_PASSWORD";
+  const CORRECT_PASSWORD = "VITE_APP_PASSWORD";
 
   const handleLogin = () => {
     if (password === CORRECT_PASSWORD) setIsAuthenticated(true);
