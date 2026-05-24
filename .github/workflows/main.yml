@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ] # 確保這與你的預設分支名稱一致
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
@@ -14,14 +14,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # 明確指定 Node 版本，避免相容性錯誤
-          cache: 'npm'     # 增加快取，加速以後的建置速度
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
 
       - name: Build
         run: npm run build
+        env:
+          # 這行很重要，確保 Vite 知道你的路徑基礎
+          BASE_URL: /Turtle-EggTart/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
